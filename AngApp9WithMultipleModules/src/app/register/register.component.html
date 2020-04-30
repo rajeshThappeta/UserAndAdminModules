@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <form #ref="ngForm" (ngSubmit)="submit(ref)">
+            <!--name-->
+            <div class="form-group">
+                <label for="n">Name</label>
+                <input type="text" id="n" name="name" class="form-control" ngModel>
+            </div>
+
+             <!--username-->
+             <div class="form-group">
+                <label for="un">Username</label>
+                <input type="text" id="un" name="username" class="form-control" ngModel>
+            </div>
+
+              <!--password-->
+              <div class="form-group">
+                <label for="pw">Password</label>
+                <input type="text" id="pw" name="password" class="form-control" ngModel>
+            </div>
+
+              <!--email-->
+              <div class="form-group">
+                <label for="em">Email</label>
+                <input type="email" id="em" name="email" class="form-control" ngModel>
+            </div>
+
+             <!--date of birth-->
+             <div class="form-group">
+                <label for="db">Email</label>
+                <input type="date" id="db" name="dob" class="form-control" ngModel>
+            </div>
+
+
+
+            
+
+
+
+            <!--image-->
+            <div>
+                <label for="">Choose profile image</label>
+                <input type="file" name="photo" id="" ngModel (input)="onChange(f.files[0])" #f>
+            </div>
+
+
+            <img [src]="imageUrl" />
+
+
+
+
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Register</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+
+</div>
