@@ -3,6 +3,7 @@ const exp=require("express");
 //create express obj
 const app=exp();
 
+require("dotenv").config();
 const path=require("path");
 
 //connecting ANgular app with this server
@@ -31,7 +32,7 @@ app.use((req,res,next)=>{
 
 
 //get db url from mongo atlas
-var dbUrl = "mongodb+srv://b26:b26@cluster0-z3col.mongodb.net/test?retryWrites=true&w=majority";
+var dbUrl = process.env.databaseUrl;
 
 mc.connect(dbUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,client)=>{
     if(err)
@@ -54,7 +55,7 @@ mc.connect(dbUrl,{useNewUrlParser:true,useUnifiedTopology:true},(err,client)=>{
         app.locals.adminCollectionObj=adminCollectionObj;
 
 
-        const port=4000;
+        const port=process.env.port||4000;
         app.listen(port,()=>{ console.log(`server listening on port ${port}`)});
 
     }

@@ -3,6 +3,7 @@ const exp = require("express");
 const userRouter = exp.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 //cloudinary configuration
 //install "cloudinary","multer-storage-cloudinary","multer" modules
@@ -173,7 +174,7 @@ userRouter.post("/login", (req, res, next) => {
           //create a JWT token and send it as response to client
           jwt.sign(
             { username: userObj.username },
-            "abcdef",
+            process.env.jwtsecret,
             { expiresIn: 20 },
             (err, signedToken) => {
               if (err) {

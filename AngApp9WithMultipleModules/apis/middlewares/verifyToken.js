@@ -1,4 +1,5 @@
 const jwt=require("jsonwebtoken");
+require("dotenv").config();
 
 var checkAndValidateToken=(req,res,next)=>{
     console.log("req headers :",req.headers.authorization);
@@ -12,7 +13,7 @@ var checkAndValidateToken=(req,res,next)=>{
         //remove first 7 chars 
        let signedToken= signedTokenWithBearer.slice(7,signedTokenWithBearer.length);
         //check validity of token
-        jwt.verify(signedToken,'abcdef',(err,decodedToken)=>{
+        jwt.verify(signedToken,process.env.jwtsecret,(err,decodedToken)=>{
             if(err)
             {
                 res.send({message:"session has expired"});
